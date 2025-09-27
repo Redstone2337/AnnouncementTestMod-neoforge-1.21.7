@@ -11,9 +11,9 @@ import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
 // This class will not load on dedicated servers. Accessing client side code from here is safe.
-@Mod(value = AnnouncementTestMod.MODID, dist = Dist.CLIENT)
+@Mod(value = AnnouncementTestMod.MOD_ID, dist = Dist.CLIENT)
 // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-@EventBusSubscriber(modid = AnnouncementTestMod.MODID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = AnnouncementTestMod.MOD_ID, value = Dist.CLIENT)
 public class AnnouncementTestModClient {
     public AnnouncementTestModClient(ModContainer container) {
         // Allows NeoForge to create a config screen for this mod's configs.
