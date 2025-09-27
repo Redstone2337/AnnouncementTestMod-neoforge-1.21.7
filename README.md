@@ -23,3 +23,8 @@ Additional Resources:
 ==========
 Community Documentation: https://docs.neoforged.net/  
 NeoForged Discord: https://discord.neoforged.net/
+
+Other Mod Loader
+===========
+[Fabric](https://github.com/Redstone2337/AnnouncementTestMod-fabric-1.21.7)
+**[NeoForge](https://github.com/Redstone2337/AnnouncementTestMod-neoforge-1.21.7)**
