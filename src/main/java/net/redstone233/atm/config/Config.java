@@ -1,4 +1,4 @@
-package net.redstone233.atm;
+package net.redstone233.atm.config;
 
 import java.util.Arrays;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.List;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
+import net.redstone233.atm.AnnouncementTestModClient;
 
 // An example config class. This is not required, but it's a good idea to have one to keep your config organized.
 // Demonstrates how to use Neo's config APIs
@@ -118,7 +119,7 @@ public class Config {
                     ),
                     Config::validateString);
 
-    static final ModConfigSpec SPEC = BUILDER.build();
+    public static final ModConfigSpec SPEC = BUILDER.build();
 
     // 验证方法
     private static boolean validateString(final Object obj) {

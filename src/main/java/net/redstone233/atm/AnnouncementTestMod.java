@@ -2,6 +2,7 @@ package net.redstone233.atm;
 
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.redstone233.atm.command.AnnouncementCommand;
+import net.redstone233.atm.config.Config;
 import net.redstone233.atm.keys.ModKeys;
 import org.slf4j.Logger;
 

@@ -8,7 +8,7 @@ import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.MessageArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
-import net.redstone233.atm.Config;
+import net.redstone233.atm.config.Config;
 import net.redstone233.atm.config.ConfigManager;
 import net.redstone233.atm.screen.AnnouncementScreen;
 

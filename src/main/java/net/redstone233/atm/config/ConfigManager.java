@@ -2,7 +2,6 @@ package net.redstone233.atm.config;
 
 import net.minecraft.ChatFormatting;
 import net.redstone233.atm.AnnouncementTestMod;
-import net.redstone233.atm.Config;
 
 import java.util.ArrayList;
 import java.util.List;
