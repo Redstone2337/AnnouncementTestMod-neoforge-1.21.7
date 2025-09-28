@@ -3,6 +3,7 @@ package net.redstone233.atm;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.redstone233.atm.command.AnnouncementCommand;
 import net.redstone233.atm.config.Config;
+import net.redstone233.atm.item.ModItems;
 import net.redstone233.atm.keys.ModKeys;
 import org.slf4j.Logger;
 
@@ -33,6 +34,8 @@ public class AnnouncementTestMod {
         long startTime = System.currentTimeMillis();
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
+
+        ModItems.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (TutorialMod) to respond directly to events.

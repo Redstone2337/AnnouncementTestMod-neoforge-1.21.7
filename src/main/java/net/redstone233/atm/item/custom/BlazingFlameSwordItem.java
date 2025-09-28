@@ -13,8 +13,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.Level;
+import net.redstone233.atm.keys.ModKeys;
 
 import java.awt.*;
+
+import static net.redstone233.atm.keys.ModKeys.isUseAbilityKeyPressed;
 
 public class BlazingFlameSwordItem extends Item {
     public BlazingFlameSwordItem(ToolMaterial material, float attackDamage, float attackSpeed, Item.Properties properties) {
@@ -49,7 +52,19 @@ public class BlazingFlameSwordItem extends Item {
 
     @Override
     public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity interactionTarget, InteractionHand usedHand) {
-        return super.interactLivingEntity(stack, player, interactionTarget, usedHand);
+        if (player instanceof Player player1 && interactionTarget instanceof LivingEntity target) {
+            // NeoForge 中需要重新实现按键检测
+            // 可以使用 capability 或客户端-服务端通信
+            if (ModKeys.wasUseAbilityKeyPressed()) {
+                target.setRemainingFireTicks(120);
+            }
+            player1.addEffect(new MobEffectInstance(MobEffects.JUMP_BOOST, 3600, 4));
+            player1.addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 1800, 6));
+
+            return InteractionResult.SUCCESS;
+        } else {
+            return InteractionResult.FAIL;
+        }
     }
 
     @Override

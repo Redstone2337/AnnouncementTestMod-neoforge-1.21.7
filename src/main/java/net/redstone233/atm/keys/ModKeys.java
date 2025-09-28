@@ -14,6 +14,7 @@ import org.lwjgl.glfw.GLFW;
 @EventBusSubscriber(modid = AnnouncementTestMod.MOD_ID, value = Dist.CLIENT)
 public class ModKeys {
     private static final String ANNOUNCEMENT_NAME = "key.atm.announcement";
+    private static final String USE_ABILITY_NAME = "key.atm.use_ability";
     private static final String KEY_CATEGORY = "category.atm";
 
 
@@ -25,18 +26,35 @@ public class ModKeys {
             KEY_CATEGORY
     );
 
+    public static KeyMapping USE_ABILITY_KEY = new KeyMapping(
+            USE_ABILITY_NAME,
+            KeyConflictContext.IN_GAME,
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_B,
+            KEY_CATEGORY
+    );
+
     @SubscribeEvent
     public static void onRegisterKeyMappings(RegisterKeyMappingsEvent event) {
         event.register(ANNOUNCEMENT_KEY);
+        event.register(USE_ABILITY_KEY);
     }
 
     public static boolean isAnnouncementKeyPressed() {
         return ANNOUNCEMENT_KEY.isDown();
     }
 
+    public static boolean isUseAbilityKeyPressed() {
+        return USE_ABILITY_KEY.isDown();
+    }
+
     // 可选：添加检查按键是否刚刚被按下（而不是持续按下）的方法
     public static boolean wasAnnouncementKeyPressed() {
         return ANNOUNCEMENT_KEY.consumeClick();
+    }
+
+    public static boolean wasUseAbilityKeyPressed() {
+        return USE_ABILITY_KEY.consumeClick();
     }
 
     public static void init() {
