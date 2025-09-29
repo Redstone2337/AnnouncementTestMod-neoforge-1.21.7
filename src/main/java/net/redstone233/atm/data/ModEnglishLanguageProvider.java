@@ -3,6 +3,7 @@ package net.redstone233.atm.data;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.redstone233.atm.AnnouncementTestMod;
+import net.redstone233.atm.item.ModItems;
 
 public class ModEnglishLanguageProvider extends LanguageProvider {
     public ModEnglishLanguageProvider(PackOutput output) {
@@ -11,6 +12,9 @@ public class ModEnglishLanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add(ModItems.ICE_FREEZE_SWORD.get(),"Ice Freeze Sword");
+        add(ModItems.BLAZING_FLAME_SWORD.get(), "Blazing Flame Sword");
+
         add("key.atm.announcement","Displays the custom announcement.");
         add("category.atm","Custom Announcement.");
 
@@ -29,5 +33,13 @@ public class ModEnglishLanguageProvider extends LanguageProvider {
         add("commands.atm.settings.subtitle.reset.success", "Sub title reset to: %s");
         add("commands.atm.settings.subtitle.reset.failure", "Failed to reset sub title: %s");
         add("commands.atm.settings.argument.true", "This command requires the argument to be 'true'");
+
+
+        add("tooltip.ability_sword.display1","Hold [");
+        add("key.use_ability.item","%s");
+        add("tooltip.ability_sword.display2"," ] for Ability to use");
+
+        add("itemGroup.announcement_tab", "ATM | Items");
+
     }
 }

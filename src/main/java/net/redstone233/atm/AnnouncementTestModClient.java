@@ -1,7 +1,13 @@
 package net.redstone233.atm;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.inventory.tooltip.TooltipComponent;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
+import net.minecraft.world.item.component.TooltipProvider;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -34,10 +40,14 @@ public class AnnouncementTestModClient {
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
         // Some client setup code
+        AnnouncementTestMod.LOGGER.info("开始初始化公告模组客户端...");
+        long startTime = System.currentTimeMillis();
         AnnouncementTestMod.LOGGER.info("HELLO FROM CLIENT SETUP");
         AnnouncementTestMod.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
 
         DEBUG_MODE = ConfigManager.isDebugMode();
+
+        AnnouncementTestMod.LOGGER.info("客户端初始化完成，总耗时 {}ms", System.currentTimeMillis() - startTime);
     }
 
     // 添加客户端tick事件处理，用于检测按键

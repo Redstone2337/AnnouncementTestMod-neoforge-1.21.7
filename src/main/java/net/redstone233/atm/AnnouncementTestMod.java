@@ -2,9 +2,12 @@ package net.redstone233.atm;
 
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.redstone233.atm.command.AnnouncementCommand;
+import net.redstone233.atm.component.types.ModComponentTypes;
 import net.redstone233.atm.config.Config;
+import net.redstone233.atm.item.ModCreativeModeTabs;
 import net.redstone233.atm.item.ModItems;
 import net.redstone233.atm.keys.ModKeys;
+import net.redstone233.atm.materials.ModToolMaterials;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -36,6 +39,8 @@ public class AnnouncementTestMod {
         modEventBus.addListener(this::commonSetup);
 
         ModItems.register(modEventBus);
+        ModCreativeModeTabs.register(modEventBus);
+        ModComponentTypes.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (TutorialMod) to respond directly to events.
@@ -55,6 +60,7 @@ public class AnnouncementTestMod {
         LOGGER.info("HELLO FROM COMMON SETUP");
 
         ModKeys.init();
+        ModToolMaterials.init();
     }
 
     // Add the example block item to the building blocks tab

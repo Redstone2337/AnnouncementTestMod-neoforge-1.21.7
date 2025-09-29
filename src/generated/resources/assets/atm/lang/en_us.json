@@ -15,5 +15,11 @@
   "commands.atm.settings.subtitle.reset.success": "Sub title reset to: %s",
   "commands.atm.settings.subtitle.set.failure": "Failed to set sub title: %s",
   "commands.atm.settings.subtitle.set.success": "Sub title set to: %s",
-  "key.atm.announcement": "Displays the custom announcement."
+  "item.atm.blazing_flame_sword": "Blazing Flame Sword",
+  "item.atm.ice_freeze_sword": "Ice Freeze Sword",
+  "itemGroup.announcement_tab": "ATM | Items",
+  "key.atm.announcement": "Displays the custom announcement.",
+  "key.use_ability.item": "%s",
+  "tooltip.ability_sword.display1": "Hold [",
+  "tooltip.ability_sword.display2": " ] for Ability to use"
 }

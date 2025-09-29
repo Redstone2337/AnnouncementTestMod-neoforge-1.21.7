@@ -13,26 +13,22 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.Level;
-import net.redstone233.atm.component.BlazingFlameSwordComponent;
+import net.redstone233.atm.component.IceFreezeSwordComponent;
 import net.redstone233.atm.component.types.ModComponentTypes;
 import net.redstone233.atm.keys.ModKeys;
 
-import java.awt.*;
-
-public class BlazingFlameSwordItem extends Item {
-
-    public BlazingFlameSwordItem(ToolMaterial material, float attackDamage, float attackSpeed, Properties properties) {
+public class IceFreezeSwordItem extends Item {
+    public IceFreezeSwordItem(ToolMaterial material, float attackDamage, float attackSpeed, Properties properties) {
         super(properties
                 .sword(material, attackDamage, attackSpeed)
-                .component(ModComponentTypes.BLAZING_FLAME_SWORD_COMPONENT, BlazingFlameSwordComponent.DEFAULT)
+                .component(ModComponentTypes.ICE_FREEZE_SWORD_COMPONENT, IceFreezeSwordComponent.DEFAULT)
         );
     }
 
     @Override
     public void postHurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if (attacker instanceof Player player && target instanceof LivingEntity livingEntity) {
-            livingEntity.isOnFire();
-            livingEntity.setRemainingFireTicks(120);
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.SLOWNESS,1200,255,true,true,true));
             player.addEffect(new MobEffectInstance(MobEffects.SPEED, 1200, 4, false, false, false));
             player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 1200, 4, false, false, false));
         }
@@ -41,11 +37,10 @@ public class BlazingFlameSwordItem extends Item {
 
     @Override
     public InteractionResult use(Level level, Player player, InteractionHand hand) {
-
         if (!level.isClientSide) {
             player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 1200, 4, false, false, false));
             player.addEffect(new MobEffectInstance(MobEffects.SATURATION, 300, 4, false, true, true));
-            player.displayClientMessage(Component.literal("执行成功！").withStyle(ChatFormatting.GREEN, ChatFormatting.BOLD),false);
+            player.displayClientMessage(Component.literal("执行成功！").withStyle(ChatFormatting.GREEN,ChatFormatting.BOLD),false);
             return InteractionResult.SUCCESS;
         } else {
             player.displayClientMessage(Component.literal("似乎并没有正常执行。").withStyle(ChatFormatting.RED, ChatFormatting.BOLD), false);
