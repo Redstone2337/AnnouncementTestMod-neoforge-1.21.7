@@ -4,6 +4,9 @@ import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.redstone233.atm.command.AnnouncementCommand;
 import net.redstone233.atm.component.types.ModComponentTypes;
 import net.redstone233.atm.config.Config;
+import net.redstone233.atm.config.v1.Configs;
+import net.redstone233.atm.core.NetworkRegistry;
+import net.redstone233.atm.event.ServerEventHandler;
 import net.redstone233.atm.item.ModCreativeModeTabs;
 import net.redstone233.atm.item.ModItems;
 import net.redstone233.atm.keys.ModKeys;
@@ -30,14 +33,21 @@ public class AnnouncementTestMod {
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
 
+    private final ServerEventHandler serverEventHandler;
+
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
-    public AnnouncementTestMod(IEventBus modEventBus, ModContainer modContainer) {
+    public AnnouncementTestMod(IEventBus modEventBus, ModContainer modContainer, ServerEventHandler serverEventHandler) {
         LOGGER.info("开始初始化内容！");
         long startTime = System.currentTimeMillis();
+
+
+        // 初始化服务器事件处理器
+        this.serverEventHandler = new ServerEventHandler();
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
+        // 注册物品和创造模式标签
         ModItems.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
         ModComponentTypes.register(modEventBus);
@@ -45,13 +55,30 @@ public class AnnouncementTestMod {
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (TutorialMod) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
+
+        // 注册事件总线
+        // 注意：服务器事件处理器需要注册到 NeoForge 事件总线
         NeoForge.EVENT_BUS.register(this);
+        NeoForge.EVENT_BUS.register(this.serverEventHandler);
+
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
 
+        modEventBus.addListener(NetworkRegistry::registerPayloadHandlers);
+
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        modContainer.registerConfig(ModConfig.Type.COMMON, Configs.SPEC);
+
+
+        // 注册网络系统
+        modEventBus.addListener(NetworkRegistry::registerPayloadHandlers);
+        LOGGER.info("网络系统注册完成");
+
+        // 注册配置系统
+        Configs.init(modEventBus, modContainer);
+        LOGGER.info("配置系统初始化完成");
+
         LOGGER.info("模组初始化完成，总耗时 {}ms", System.currentTimeMillis() - startTime);
     }
 

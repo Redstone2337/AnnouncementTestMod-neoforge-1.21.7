@@ -1,5 +1,6 @@
 package net.redstone233.atm.item;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
@@ -8,9 +9,6 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.redstone233.atm.AnnouncementTestMod;
-import net.redstone233.atm.component.BlazingFlameSwordComponent;
-import net.redstone233.atm.component.IceFreezeSwordComponent;
-import net.redstone233.atm.component.types.ModComponentTypes;
 import net.redstone233.atm.item.custom.BlazingFlameSwordItem;
 import net.redstone233.atm.item.custom.IceFreezeSwordItem;
 import net.redstone233.atm.materials.ModToolMaterials;
@@ -25,6 +23,7 @@ public class ModItems {
                                 .setId(ResourceKey.create(Registries.ITEM, resourceLocation))
                                 .durability(300000)
                                 .rarity(Rarity.RARE)
+                                .component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE,true)
                     )
             );
 
@@ -35,6 +34,7 @@ public class ModItems {
                                 .setId(ResourceKey.create(Registries.ITEM, resourceLocation))
                                 .durability(300000)
                                 .rarity(Rarity.RARE)
+                                .component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE,true)
                     )
             );
 
