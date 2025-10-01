@@ -1,6 +1,7 @@
 package net.redstone233.atm;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -123,7 +124,7 @@ public class AnnouncementTestModClient {
             Minecraft minecraft = Minecraft.getInstance();
             if (minecraft.player != null) {
                 minecraft.player.displayClientMessage(
-                        net.minecraft.network.chat.Component.literal("打开公告屏幕时发生错误，请查看日志"),
+                       Component.literal("打开公告屏幕时发生错误，请查看日志"),
                         false
                 );
             }

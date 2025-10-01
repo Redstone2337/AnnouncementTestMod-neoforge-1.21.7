@@ -2,8 +2,6 @@ package net.redstone233.atm.config.v1;
 
 import net.minecraft.ChatFormatting;
 import net.redstone233.atm.AnnouncementTestMod;
-import net.redstone233.atm.config.Config;
-import net.redstone233.atm.config.v1.Configs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,7 +91,6 @@ public class ConfigManager {
     }
 
     // ==================== 内容设置 ====================
-    @SuppressWarnings("unchecked")
     public static List<String> getAnnouncementContent() {
         try {
             // 安全地转换类型

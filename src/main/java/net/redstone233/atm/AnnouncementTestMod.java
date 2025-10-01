@@ -1,9 +1,8 @@
 package net.redstone233.atm;
 
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
-import net.redstone233.atm.command.AnnouncementCommand;
+import net.redstone233.atm.command.v1.AnnouncementCommand;
 import net.redstone233.atm.component.types.ModComponentTypes;
-import net.redstone233.atm.config.Config;
 import net.redstone233.atm.config.v1.Configs;
 import net.redstone233.atm.core.NetworkRegistry;
 import net.redstone233.atm.event.ServerEventHandler;
@@ -33,17 +32,15 @@ public class AnnouncementTestMod {
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    private final ServerEventHandler serverEventHandler;
-
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
-    public AnnouncementTestMod(IEventBus modEventBus, ModContainer modContainer, ServerEventHandler serverEventHandler) {
+    public AnnouncementTestMod(IEventBus modEventBus, ModContainer modContainer) {
         LOGGER.info("开始初始化内容！");
         long startTime = System.currentTimeMillis();
 
-
         // 初始化服务器事件处理器
-        this.serverEventHandler = new ServerEventHandler();
+        ServerEventHandler serverEventHandler = new ServerEventHandler();
+
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
@@ -59,8 +56,7 @@ public class AnnouncementTestMod {
         // 注册事件总线
         // 注意：服务器事件处理器需要注册到 NeoForge 事件总线
         NeoForge.EVENT_BUS.register(this);
-        NeoForge.EVENT_BUS.register(this.serverEventHandler);
-
+        NeoForge.EVENT_BUS.register(serverEventHandler);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -69,11 +65,6 @@ public class AnnouncementTestMod {
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Configs.SPEC);
-
-
-        // 注册网络系统
-        modEventBus.addListener(NetworkRegistry::registerPayloadHandlers);
-        LOGGER.info("网络系统注册完成");
 
         // 注册配置系统
         Configs.init(modEventBus, modContainer);
@@ -105,5 +96,6 @@ public class AnnouncementTestMod {
     @SubscribeEvent
     public void onRegisterCommands(RegisterCommandsEvent event) {
         event.getDispatcher().register(AnnouncementCommand.register());
+        event.getDispatcher().register(net.redstone233.atm.command.AnnouncementCommand.register());
     }
 }

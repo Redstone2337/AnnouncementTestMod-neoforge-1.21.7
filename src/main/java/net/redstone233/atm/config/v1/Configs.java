@@ -13,128 +13,128 @@ public class Configs {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
     // ==================== 通用设置 ====================
-    private static void setupGeneralSettings(ModConfigSpec.Builder builder) {
-        builder.push("general");
+    private static void setupGeneralSettings() {
+        Configs.BUILDER.push("general");
 
-        SHOW_ON_WORLD_ENTER = builder
+        SHOW_ON_WORLD_ENTER = Configs.BUILDER
                 .comment("是否在进入世界时显示公告")
                 .define("showOnWorldEnter", true);
 
-        DEBUG_MODE = builder
+        DEBUG_MODE = Configs.BUILDER
                 .comment("启用调试模式（显示UI边界等辅助信息）")
                 .define("debugMode", false);
 
-        builder.pop();
+        Configs.BUILDER.pop();
     }
 
     // ==================== 显示设置 ====================
-    private static void setupDisplaySettings(ModConfigSpec.Builder builder) {
-        builder.push("display");
+    private static void setupDisplaySettings() {
+        Configs.BUILDER.push("display");
 
-        MAIN_TITLE = builder
+        MAIN_TITLE = Configs.BUILDER
                 .comment("主标题文本")
                 .define("mainTitle", "服务器公告");
 
-        SUB_TITLE = builder
+        SUB_TITLE = Configs.BUILDER
                 .comment("副标题文本")
                 .define("subTitle", "最新通知");
 
-        SCROLL_SPEED = builder
+        SCROLL_SPEED = Configs.BUILDER
                 .comment("文本滚动速度")
                 .defineInRange("scrollSpeed", 1, 1, 10);
 
-        builder.pop();
+        Configs.BUILDER.pop();
     }
 
     // ==================== 颜色设置 ====================
-    private static void setupColorSettings(ModConfigSpec.Builder builder) {
-        builder.push("colors");
+    private static void setupColorSettings() {
+        Configs.BUILDER.push("colors");
 
-        USE_CUSTOM_RGB = builder
+        USE_CUSTOM_RGB = Configs.BUILDER
                 .comment("是否使用自定义RGB颜色")
                 .define("useCustomRGB", false);
 
-        MAIN_TITLE_COLOR = builder
+        MAIN_TITLE_COLOR = Configs.BUILDER
                 .comment("主标题颜色 (RGB整数，十六进制格式如0xFFFFFF)")
                 .defineInRange("mainTitleColor", 0xFFFFFF, 0x000000, 0xFFFFFF);
 
-        SUB_TITLE_COLOR = builder
+        SUB_TITLE_COLOR = Configs.BUILDER
                 .comment("副标题颜色 (RGB整数，十六进制格式如0xCCCCCC)")
                 .defineInRange("subTitleColor", 0xCCCCCC, 0x000000, 0xFFFFFF);
 
-        CONTENT_COLOR = builder
+        CONTENT_COLOR = Configs.BUILDER
                 .comment("公告内容颜色 (RGB整数，十六进制格式如0xFFFFFF)")
                 .defineInRange("contentColor", 0xFFFFFF, 0x000000, 0xFFFFFF);
 
-        builder.pop();
+        Configs.BUILDER.pop();
     }
 
     // ==================== 按钮设置 ====================
-    private static void setupButtonSettings(ModConfigSpec.Builder builder) {
-        builder.push("buttons");
+    private static void setupButtonSettings() {
+        Configs.BUILDER.push("buttons");
 
-        CONFIRM_BUTTON_TEXT = builder
+        CONFIRM_BUTTON_TEXT = Configs.BUILDER
                 .comment("确定按钮文本")
                 .define("confirmButtonText", "确定");
 
-        SUBMIT_BUTTON_TEXT = builder
+        SUBMIT_BUTTON_TEXT = Configs.BUILDER
                 .comment("前往投递按钮文本")
                 .define("submitButtonText", "前往投递");
 
-        BUTTON_LINK = builder
+        BUTTON_LINK = Configs.BUILDER
                 .comment("按钮点击后打开的链接")
                 .define("buttonLink", "https://github.com/Redstone2337/TestMod-1.21.7-fabric-master/issues");
 
-        builder.pop();
+        Configs.BUILDER.pop();
     }
 
     // ==================== 图标设置 ====================
-    private static void setupIconSettings(ModConfigSpec.Builder builder) {
-        builder.push("icon");
+    private static void setupIconSettings() {
+        Configs.BUILDER.push("icon");
 
-        SHOW_ICON = builder
+        SHOW_ICON = Configs.BUILDER
                 .comment("是否显示公告图标")
                 .define("showIcon", false);
 
-        ICON_PATH = builder
+        ICON_PATH = Configs.BUILDER
                 .comment("图标资源路径")
                 .define("path", "announcement_mod:textures/gui/icon.png");
 
-        ICON_WIDTH = builder
+        ICON_WIDTH = Configs.BUILDER
                 .comment("图标宽度 (像素)")
                 .defineInRange("width", 32, 16, 128);
 
-        ICON_HEIGHT = builder
+        ICON_HEIGHT = Configs.BUILDER
                 .comment("图标高度 (像素)")
                 .defineInRange("height", 32, 16, 128);
 
-        ICON_TEXT_SPACING = builder
+        ICON_TEXT_SPACING = Configs.BUILDER
                 .comment("图标与文本的间距 (像素)")
                 .defineInRange("textSpacing", 10, 0, 50);
 
-        builder.pop();
+        Configs.BUILDER.pop();
     }
 
     // ==================== 背景设置 ====================
-    private static void setupBackgroundSettings(ModConfigSpec.Builder builder) {
-        builder.push("background");
+    private static void setupBackgroundSettings() {
+        Configs.BUILDER.push("background");
 
-        USE_CUSTOM_ANNOUNCEMENT_BACKGROUND = builder
+        USE_CUSTOM_ANNOUNCEMENT_BACKGROUND = Configs.BUILDER
                 .comment("是否使用自定义公告背景图")
                 .define("enabled", false);
 
-        ANNOUNCEMENT_BACKGROUND_PATH = builder
+        ANNOUNCEMENT_BACKGROUND_PATH = Configs.BUILDER
                 .comment("公告背景图路径")
                 .define("path", "announcement_mod:textures/gui/background.png");
 
-        builder.pop();
+        Configs.BUILDER.pop();
     }
 
     // ==================== 内容设置 ====================
-    private static void setupContentSettings(ModConfigSpec.Builder builder) {
-        builder.push("content");
+    private static void setupContentSettings() {
+        Configs.BUILDER.push("content");
 
-        ANNOUNCEMENT_CONTENT = builder
+        ANNOUNCEMENT_CONTENT = Configs.BUILDER
                 .comment("公告内容（每行一条，支持多行）")
                 .defineListAllowEmpty("lines",
                         Arrays.asList(
@@ -150,11 +150,11 @@ public class Configs {
                         ),
                         Configs::validateString);
 
-        LAST_DISPLAYED_HASH = builder
+        LAST_DISPLAYED_HASH = Configs.BUILDER
                 .comment("上次显示公告的哈希值（用于检测公告是否已修改）")
                 .define("lastDisplayedHash", "");
 
-        builder.pop();
+        Configs.BUILDER.pop();
     }
 
     // 配置字段声明
@@ -182,13 +182,13 @@ public class Configs {
 
     static {
         // 按顺序初始化各个配置节
-        setupGeneralSettings(BUILDER);
-        setupDisplaySettings(BUILDER);
-        setupColorSettings(BUILDER);
-        setupButtonSettings(BUILDER);
-        setupIconSettings(BUILDER);
-        setupBackgroundSettings(BUILDER);
-        setupContentSettings(BUILDER);
+        setupGeneralSettings();
+        setupDisplaySettings();
+        setupColorSettings();
+        setupButtonSettings();
+        setupIconSettings();
+        setupBackgroundSettings();
+        setupContentSettings();
     }
 
     public static final ModConfigSpec SPEC = BUILDER.build();

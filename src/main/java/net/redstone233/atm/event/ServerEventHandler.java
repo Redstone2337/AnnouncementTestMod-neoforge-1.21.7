@@ -24,7 +24,7 @@ public class ServerEventHandler {
             return;
         }
 
-        if (!hasPlayerSeenAnnouncement(player).get()) {
+        if (!hasPlayerSeenAnnouncement(player).orElse(false)) {
             sendAnnouncementToPlayer(player);
             markPlayerSeenAnnouncement(player);
         }
@@ -38,7 +38,7 @@ public class ServerEventHandler {
 
         // 只在进入主世界时显示
         if (event.getTo().location().getPath().equals("overworld")) {
-            if (!hasPlayerSeenAnnouncement(player).get()) {
+            if (!hasPlayerSeenAnnouncement(player).orElse(false)) {
                 sendAnnouncementToPlayer(player);
                 markPlayerSeenAnnouncement(player);
             }
@@ -46,16 +46,14 @@ public class ServerEventHandler {
     }
 
     private Optional<Boolean> hasPlayerSeenAnnouncement(ServerPlayer player) {
-        CompoundTag persistentData = player.getPersistentData();
-        CompoundTag data = persistentData;
+        CompoundTag data = player.getPersistentData();
         return data.getBoolean(SEEN_ANNOUNCEMENT_KEY);
     }
 
     private void markPlayerSeenAnnouncement(ServerPlayer player) {
         CompoundTag persistentData = player.getPersistentData();
-        CompoundTag data = persistentData;
-        data.putBoolean(SEEN_ANNOUNCEMENT_KEY, true);
-        persistentData.put(ServerPlayer.PERSISTED_NBT_TAG, data);
+        persistentData.putBoolean(SEEN_ANNOUNCEMENT_KEY, true);
+        persistentData.put(ServerPlayer.PERSISTED_NBT_TAG, persistentData);
     }
 
     private void sendAnnouncementToPlayer(ServerPlayer player) {
@@ -65,9 +63,8 @@ public class ServerEventHandler {
 
     // 重置玩家公告状态的方法
     public static void resetPlayerAnnouncementStatus(ServerPlayer player) {
-        CompoundTag persistentData = player.getPersistentData();
-        CompoundTag data = persistentData;
+        CompoundTag data = player.getPersistentData();
         data.putBoolean(SEEN_ANNOUNCEMENT_KEY, false);
-        persistentData.put(ServerPlayer.PERSISTED_NBT_TAG, data);
+        data.put(ServerPlayer.PERSISTED_NBT_TAG, data);
     }
 }

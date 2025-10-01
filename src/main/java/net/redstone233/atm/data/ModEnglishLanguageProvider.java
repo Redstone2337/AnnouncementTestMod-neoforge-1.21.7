@@ -22,13 +22,13 @@ public class ModEnglishLanguageProvider extends LanguageProvider {
         add("commands.atm.display.failure", "Failed to display announcement");
         add("commands.atm.settings.maintitle.set.success", "Main title set to: %s");
         add("commands.atm.settings.maintitle.set.failure", "Failed to set main title: %s");
-        add("commands.atm.settings.maintitle.empty.status", "Main title empty status: %s");
+        add("commands.atm.settings.maintitle.empty.status", "Main Title has been set to empty text.");
         add("commands.atm.settings.maintitle.empty.failure", "Failed to check main title empty status: %s");
         add("commands.atm.settings.maintitle.reset.success", "Main title reset to: %s");
         add("commands.atm.settings.maintitle.reset.failure", "Failed to reset main title: %s");
         add("commands.atm.settings.subtitle.set.success", "Sub title set to: %s");
         add("commands.atm.settings.subtitle.set.failure", "Failed to set sub title: %s");
-        add("commands.atm.settings.subtitle.empty.status", "Sub title empty status: %s");
+        add("commands.atm.settings.subtitle.empty.status", "Sub Title has been set to empty text.");
         add("commands.atm.settings.subtitle.empty.failure", "Failed to check sub title empty status: %s");
         add("commands.atm.settings.subtitle.reset.success", "Sub title reset to: %s");
         add("commands.atm.settings.subtitle.reset.failure", "Failed to reset sub title: %s");

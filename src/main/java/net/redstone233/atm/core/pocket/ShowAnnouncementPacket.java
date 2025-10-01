@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.redstone233.atm.config.v1.ConfigManager;
 import net.redstone233.atm.core.network.ClientPacketHandler;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -116,7 +117,7 @@ public record ShowAnnouncementPacket(
     }
 
     @Override
-    public Type<? extends CustomPacketPayload> type() {
+    public @NotNull Type<? extends CustomPacketPayload> type() {
         return TYPE;
     }
 
