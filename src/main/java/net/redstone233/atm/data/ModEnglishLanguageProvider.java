@@ -14,6 +14,7 @@ public class ModEnglishLanguageProvider extends LanguageProvider {
     protected void addTranslations() {
         add(ModItems.ICE_FREEZE_SWORD.get(),"Ice Freeze Sword");
         add(ModItems.BLAZING_FLAME_SWORD.get(), "Blazing Flame Sword");
+        add(ModItems.TEST_ITEM.get(), "Test Item");
 
         add("key.atm.announcement","Displays the custom announcement.");
         add("category.atm","Custom Announcement.");

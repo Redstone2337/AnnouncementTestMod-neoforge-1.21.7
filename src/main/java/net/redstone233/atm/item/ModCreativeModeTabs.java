@@ -21,6 +21,7 @@ public class ModCreativeModeTabs {
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.BLAZING_FLAME_SWORD);
                         output.accept(ModItems.ICE_FREEZE_SWORD);
+                        output.accept(ModItems.TEST_ITEM);
                     })
                     .build()
             );

@@ -11,6 +11,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.redstone233.atm.AnnouncementTestMod;
 import net.redstone233.atm.item.custom.BlazingFlameSwordItem;
 import net.redstone233.atm.item.custom.IceFreezeSwordItem;
+import net.redstone233.atm.item.custom.TestItem;
 import net.redstone233.atm.materials.ModToolMaterials;
 
 public class ModItems {
@@ -35,6 +36,15 @@ public class ModItems {
                                 .durability(300000)
                                 .rarity(Rarity.RARE)
                                 .component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE,true)
+                    )
+            );
+
+    public static final DeferredItem<Item> TEST_ITEM =
+            ITEMS.register("test_item", resourceLocation -> new TestItem(
+                        new Item.Properties()
+                                .setId(ResourceKey.create(Registries.ITEM, resourceLocation))
+                                .stacksTo(64)
+                                .attributes(TestItem.createAttributes())
                     )
             );
 
