@@ -35,6 +35,13 @@ public class ModEnglishLanguageProvider extends LanguageProvider {
         add("commands.atm.settings.subtitle.reset.failure", "Failed to reset sub title: %s");
         add("commands.atm.settings.argument.true", "This command requires the argument to be 'true'");
 
+        add("menu.title.text","Text Menu");
+        add("menu.body.text","This is a custom menu screen.");
+        add("menu.button.text.1","Button 1");
+        add("menu.button.text.2","Button 2");
+        add("menu.title.modVersion.text", "Mod Version: %s");
+        add("menu.title.gameVersion.text", "Minecraft Version: %s");
+
 
         add("tooltip.ability_sword.display1","Hold [");
         add("key.use_ability.item","%s");

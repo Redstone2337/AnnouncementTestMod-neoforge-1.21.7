@@ -1,5 +1,6 @@
 package net.redstone233.atm.item.custom;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -16,6 +17,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.redstone233.atm.screen.MenuScreen;
+import org.jetbrains.annotations.NotNull;
 
 public class TestItem extends Item {
     public TestItem(Properties properties) {
@@ -50,9 +53,10 @@ public class TestItem extends Item {
     }
 
     @Override
-    public InteractionResult use(Level level, Player player, InteractionHand hand) {
+    public @NotNull InteractionResult use(Level level, @NotNull Player player, @NotNull InteractionHand hand) {
         if (level.isClientSide()) {
             player.addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST,6000,4,false,false,false));
+            Minecraft.getInstance().setScreen(new MenuScreen());
                 return InteractionResult.SUCCESS;
         } else {
             player.displayClientMessage(Component.literal("似乎没有正常运行"),false);
@@ -61,7 +65,7 @@ public class TestItem extends Item {
     }
 
     @Override
-    public InteractionResult useOn(UseOnContext context) {
+    public @NotNull InteractionResult useOn(UseOnContext context) {
         if (context.getPlayer() instanceof ServerPlayer player && context.getLevel().isClientSide()) {
             player.addEffect(new MobEffectInstance(MobEffects.WITHER,6000,1,true,true,true));
             if (!player.isDeadOrDying()) {

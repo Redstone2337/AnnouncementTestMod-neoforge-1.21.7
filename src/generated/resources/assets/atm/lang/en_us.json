@@ -21,6 +21,12 @@
   "itemGroup.announcement_tab": "ATM | Items",
   "key.atm.announcement": "Displays the custom announcement.",
   "key.use_ability.item": "%s",
+  "menu.body.text": "This is a custom menu screen.",
+  "menu.button.text.1": "Button 1",
+  "menu.button.text.2": "Button 2",
+  "menu.title.gameVersion.text": "Minecraft Version: %s",
+  "menu.title.modVersion.text": "Mod Version: %s",
+  "menu.title.text": "Text Menu",
   "tooltip.ability_sword.display1": "Hold [",
   "tooltip.ability_sword.display2": " ] for Ability to use"
 }
